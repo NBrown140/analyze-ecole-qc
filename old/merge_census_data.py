@@ -21,22 +21,33 @@ if __name__ == "__main__":
         indexer.create_index()#dtype=dtypes)
 
     # Read dissemination area file
-    dissemination_areas = gpd.read_file(dissemination_area_file)
-    print(dissemination_areas.head())
+    # dissemination_areas = gpd.read_file(dissemination_area_file)
+    # print(dissemination_areas.head())
+
+    dguid = "2021A000011124"
+    df = indexer.load_rows_by_id(dguid)
+    df.to_csv("test.csv")
+    print(df)
+
+    df2 = pd.read_csv(census_file, nrows=3000, encoding=indexer.encoding)
+    df2.to_csv("test2.csv")
+    print(df2)
+
+    exit()
 
     # For each dissemination area
-    for i, row in dissemination_areas.iterrows():
-        print(i)
-        dguid = row["DGUID"]
-        print(dguid)
+    # for i, row in dissemination_areas.iterrows():
+    #     print(i)
+    #     dguid = row["DGUID"]
+    #     print(dguid)
 
-        # Find related data in 2021 census data
-        df = indexer.load_rows_by_id(dguid)
+        # # Find related data in 2021 census data
+        # df = indexer.load_rows_by_id(dguid)
 
-        if len(df) > 0:
-            print(dguid)
-            print(df.head())
-            break
+        # if len(df) > 0:
+        #     print(dguid)
+        #     print(df.head())
+        #     break
         # Keep only desired fields
 
         # Add to new geodataframe

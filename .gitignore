@@ -1,5 +1,7 @@
 *.pyc
 
 __pycache__/
-data/
+
+data/school/
+data/statscan/
 indexes/
